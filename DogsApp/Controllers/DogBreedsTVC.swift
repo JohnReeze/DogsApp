@@ -14,8 +14,6 @@ private let segueIdentifier = "ShowDogPhotos"
 class DogBreedsTVC: UITableViewController {
 
     // MARK: - Properties
-    let dogAPIManager = DogsAPIManager.shared
-    
     private var breeds : [String] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -31,10 +29,10 @@ class DogBreedsTVC: UITableViewController {
     }
     
     func loadInfo() {
-        dogAPIManager.fetchBreeds(onSuccess: { (result) in
+        DogsAPIManager.shared.fetchBreeds(onSuccess: { [unowned self] (result) in
             self.breeds = result
         }) { [unowned self] (error) in
-            self.showAlert(message: error.localizedDescription)
+            self.showAlert(message: error.description)
         }
     }
     
@@ -54,9 +52,7 @@ class DogBreedsTVC: UITableViewController {
 extension DogBreedsTVC {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         let indexPath  =  self.tableView.indexPath(for: sender as! UITableViewCell)!
-       
         if segue.identifier ==  segueIdentifier {
             guard let ivc = segue.destination as? SelectedBreedCVC else {
                 return

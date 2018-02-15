@@ -14,18 +14,15 @@ class DetailBreedPhotoCVC: UICollectionViewController {
     
     // MARK: - Properties
     var imagesURLs: [String] = []
-    var cache: NSCache<NSString, UIImage>?
+    var cache: NSCache<NSString, UIImage>? {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
 
     var itemsOffset: IndexPath = IndexPath() {
         didSet {
             collectionView?.scrollToItem(at: itemsOffset, at: .left, animated: false)
-            imagesURLs = imagesURLs.filter({ (url) -> Bool in
-                if let _ = cache?.object(forKey: url as NSString) {
-                    return true
-                }
-                return false
-            })
-            collectionView?.reloadData()
         }
     }
 
@@ -38,14 +35,17 @@ class DetailBreedPhotoCVC: UICollectionViewController {
     // rotation case
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        //this centers images while rotating
+        //this centers images while rotating by setting contentOffset
         let offset = collectionView!.contentOffset
         let width = collectionView!.bounds.size.width
         let index = round(offset.x / width)
         let newOffset = CGPoint(x: index * size.width, y: offset.y)
-        collectionView?.setContentOffset(newOffset, animated: false)
-        
         collectionView?.collectionViewLayout.invalidateLayout()
+        collectionView?.setContentOffset(newOffset, animated: false)
+        coordinator.animateAlongsideTransition(in: self.view, animation: { (context) in
+            self.collectionView?.setContentOffset(newOffset, animated: false)
+        }, completion: nil)
+    
     }
 }
 

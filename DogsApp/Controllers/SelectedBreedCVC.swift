@@ -15,7 +15,6 @@ class SelectedBreedCVC: UICollectionViewController {
     // MARK: - Properties
     let spacing: CGFloat = 5.1
     let cache = NSCache<NSString, UIImage>()
-    
     var breed: String = ""
     let loadQueue = OperationQueue()
     var loadOperations = [IndexPath : ImageLoadOperation]()
@@ -40,10 +39,10 @@ class SelectedBreedCVC: UICollectionViewController {
     }
     
     func loadInfo() {
-        DogsAPIManager.shared.fetchURLsFor(breed: breed, onSuccess: { (arr) in
+        DogsAPIManager.shared.fetchURLsFor(breed: breed, onSuccess: { [unowned self] (arr) in
             self.URLs = arr
-        }, onFailure: { (error) in
-            self.showAlert(message: error.localizedDescription)
+        }, onFailure: { [unowned self] (error) in
+            self.showAlert(message: error.description)
         })
     }
     
@@ -67,13 +66,22 @@ class SelectedBreedCVC: UICollectionViewController {
 extension SelectedBreedCVC {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath  =  self.collectionView?.indexPath(for: sender as! UICollectionViewCell)
-        if segue.identifier ==  segueIdentifier {
+        var indexPath =  self.collectionView?.indexPath(for: sender as! UICollectionViewCell)
+        if segue.identifier ==  segueIdentifier && indexPath != nil {
             guard let dvc = segue.destination as? DetailBreedPhotoCVC else {
                 return
             }
             dvc.title = self.title
-            dvc.imagesURLs = self.URLs
+            // we are going to display only loaded images
+            var tmp: [String] = []
+            for i in 0..<self.URLs.count {
+                if let _ = cache.object(forKey: URLs[i] as NSString) {
+                    tmp.append(URLs[i])
+                } else if indexPath!.row > i {
+                    indexPath!.row -= 1
+                }
+            }
+            dvc.imagesURLs = tmp
             dvc.cache = self.cache
             dvc.itemsOffset = indexPath!
         }

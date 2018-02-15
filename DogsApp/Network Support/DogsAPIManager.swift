@@ -8,6 +8,26 @@
 
 import Foundation
 
+enum DogNetworkError: Error, CustomStringConvertible {
+    case networkError(code: Int)
+    case anotherError(message: String?)
+
+    public var description: String {
+        switch self {
+        case .networkError(let code):
+            switch code {
+            case -2000..<0:
+                return "You are offline. Please check your internet connection"
+            default:
+                return "Network error with code \(code)"
+            }
+        case .anotherError(let message):
+            //other cases to be handled
+            return message ?? "Error"
+        }
+    }
+}
+
 class DogsAPIManager {
     
     let baseURL = "https://dog.ceo/api"
@@ -21,7 +41,7 @@ class DogsAPIManager {
         return URL(string: baseURL + breed + breedImagesPath)
     }
     
-    func fetchBreeds(onSuccess: @escaping([String]) -> Void,onFailure: @escaping (Error) -> Void) {
+    func fetchBreeds(onSuccess: @escaping([String]) -> Void,onFailure: @escaping (DogNetworkError) -> Void) {
         guard let breedsURL = URL(string: baseURL + allBreedsPath) else { return }
         fetchDogsInfo(url: breedsURL, onSuccess: { (breeds) in
             onSuccess(breeds)
@@ -30,7 +50,7 @@ class DogsAPIManager {
         }
     }
     
-    func fetchURLsFor(breed: String, onSuccess: @escaping ([String]) -> Void,onFailure: @escaping (Error) -> Void) {
+    func fetchURLsFor(breed: String, onSuccess: @escaping ([String]) -> Void,onFailure: @escaping (DogNetworkError) -> Void) {
         guard let breedsURL = URL(string: baseURL + breedPath + breed + breedImagesPath) else { return }
         fetchDogsInfo(url: breedsURL, onSuccess: { (breeds) in
             onSuccess(breeds)
@@ -39,19 +59,26 @@ class DogsAPIManager {
         }
     }
     
-    private func fetchDogsInfo(url: URL, onSuccess: @escaping ([String]) -> Void, onFailure: @escaping (Error) -> Void) {
+    private func fetchDogsInfo(url: URL, onSuccess: @escaping ([String]) -> Void, onFailure: @escaping (DogNetworkError) -> Void) {
         
         let session = URLSession.shared
         
         session.dataTask(with: url ) { (data, response, error) in
             
-            guard  error == nil else {
-                onFailure(error!)
+            guard error == nil else {
+                if let nsError = error as NSError? {
+                    onFailure(DogNetworkError.networkError(code: nsError.code))
+                }
                 return
             }
             
-            guard  let data = data, let _ = response else {
-                print("no data or response")
+            guard let data = data else {
+                onFailure(DogNetworkError.anotherError(message: "No data retrieved"))
+                return
+            }
+            
+            guard let _ = response else {
+                onFailure(DogNetworkError.anotherError(message: "No no response retrieved"))
                 return
             }
 
