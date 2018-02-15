@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		862200392031ACC500069265 /* DetailBreedPhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862200382031ACC500069265 /* DetailBreedPhotoCVC.swift */; };
+		8622003B2031B27600069265 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8622003A2031B27600069265 /* DetailCollectionViewCell.swift */; };
+		86281E42202C734400104415 /* DogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86281E41202C734400104415 /* DogCollectionViewCell.swift */; };
+		86281E46202E33BF00104415 /* ImageLoadingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86281E45202E33BF00104415 /* ImageLoadingOperation.swift */; };
 		86630863202A2DC10013EBCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86630862202A2DC10013EBCA /* AppDelegate.swift */; };
-		86630865202A2DC10013EBCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86630864202A2DC10013EBCA /* ViewController.swift */; };
 		86630868202A2DC10013EBCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86630866202A2DC10013EBCA /* Main.storyboard */; };
 		8663086A202A2DC10013EBCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86630869202A2DC10013EBCA /* Assets.xcassets */; };
 		8663086D202A2DC10013EBCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8663086B202A2DC10013EBCA /* LaunchScreen.storyboard */; };
+		86630877202A30860013EBCA /* SelectedBreedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86630876202A30860013EBCA /* SelectedBreedCVC.swift */; };
+		86630879202A31040013EBCA /* DogsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86630878202A31040013EBCA /* DogsAPIManager.swift */; };
+		8663087B202A46AF0013EBCA /* DogBreedsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8663087A202A46AF0013EBCA /* DogBreedsTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		862200382031ACC500069265 /* DetailBreedPhotoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBreedPhotoCVC.swift; sourceTree = "<group>"; };
+		8622003A2031B27600069265 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		86281E41202C734400104415 /* DogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCollectionViewCell.swift; sourceTree = "<group>"; };
+		86281E45202E33BF00104415 /* ImageLoadingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingOperation.swift; sourceTree = "<group>"; };
 		8663085F202A2DC10013EBCA /* DogsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86630862202A2DC10013EBCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86630864202A2DC10013EBCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		86630867202A2DC10013EBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86630869202A2DC10013EBCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8663086C202A2DC10013EBCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8663086E202A2DC10013EBCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86630876202A30860013EBCA /* SelectedBreedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedBreedCVC.swift; sourceTree = "<group>"; };
+		86630878202A31040013EBCA /* DogsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsAPIManager.swift; sourceTree = "<group>"; };
+		8663087A202A46AF0013EBCA /* DogBreedsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedsTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86281E40202C699600104415 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8663087A202A46AF0013EBCA /* DogBreedsTVC.swift */,
+				86630876202A30860013EBCA /* SelectedBreedCVC.swift */,
+				862200382031ACC500069265 /* DetailBreedPhotoCVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		86281E43202C8D8100104415 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				86630866202A2DC10013EBCA /* Main.storyboard */,
+				86281E41202C734400104415 /* DogCollectionViewCell.swift */,
+				8622003A2031B27600069265 /* DetailCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		86281E44202E338800104415 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				86630862202A2DC10013EBCA /* AppDelegate.swift */,
+				86630869202A2DC10013EBCA /* Assets.xcassets */,
+				8663086B202A2DC10013EBCA /* LaunchScreen.storyboard */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		86630856202A2DC10013EBCA = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +96,22 @@
 		86630861202A2DC10013EBCA /* DogsApp */ = {
 			isa = PBXGroup;
 			children = (
-				86630862202A2DC10013EBCA /* AppDelegate.swift */,
-				86630864202A2DC10013EBCA /* ViewController.swift */,
-				86630866202A2DC10013EBCA /* Main.storyboard */,
-				86630869202A2DC10013EBCA /* Assets.xcassets */,
-				8663086B202A2DC10013EBCA /* LaunchScreen.storyboard */,
 				8663086E202A2DC10013EBCA /* Info.plist */,
+				86281E44202E338800104415 /* Other */,
+				86281E43202C8D8100104415 /* Views */,
+				86281E40202C699600104415 /* Controllers */,
+				869E1C012033A24700788FB3 /* Network Support */,
 			);
 			path = DogsApp;
+			sourceTree = "<group>";
+		};
+		869E1C012033A24700788FB3 /* Network Support */ = {
+			isa = PBXGroup;
+			children = (
+				86630878202A31040013EBCA /* DogsAPIManager.swift */,
+				86281E45202E33BF00104415 /* ImageLoadingOperation.swift */,
+			);
+			path = "Network Support";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86630865202A2DC10013EBCA /* ViewController.swift in Sources */,
+				86630879202A31040013EBCA /* DogsAPIManager.swift in Sources */,
+				8663087B202A46AF0013EBCA /* DogBreedsTVC.swift in Sources */,
+				86281E46202E33BF00104415 /* ImageLoadingOperation.swift in Sources */,
+				8622003B2031B27600069265 /* DetailCollectionViewCell.swift in Sources */,
+				862200392031ACC500069265 /* DetailBreedPhotoCVC.swift in Sources */,
+				86281E42202C734400104415 /* DogCollectionViewCell.swift in Sources */,
+				86630877202A30860013EBCA /* SelectedBreedCVC.swift in Sources */,
 				86630863202A2DC10013EBCA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QNHYCGKHF;
 				INFOPLIST_FILE = DogsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSU.DogsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QNHYCGKHF;
 				INFOPLIST_FILE = DogsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSU.DogsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
